@@ -2,12 +2,12 @@
 
 DIMER pipeline for **CvT-13** (`microsoft/cvt-13`), a Vision Transformer with convolutional token embeddings and convolutional projections, trained on ImageNet-1k. The pipeline loads the checkpoint only from a digest-verified local snapshot, returns top-k softmax scores over the ImageNet-1k classes, and adds a bounded fine-tuning workflow that replaces the head for a new set of classes, compares it with majority-class and zero-shot baselines, and exports a SafeTensors adapter.
 
-> **The upstream snapshot is not yet pinned.** `MODEL_REVISION` is `"unpinned"` and the manifest records byte sizes but no SHA-256 digests. Every weight operation refuses to run until `python tools/pin_snapshot.py` has recorded the commit and digests (see [Pinning the snapshot](#pinning-the-snapshot)).
+> **The upstream snapshot is pinned** to Hub commit `84e365a5f6a5ca987486abb25f3d8e5265cdc44d` (pinned 2026-09-25). The manifest records every file's byte size and SHA-256, and each LFS digest matched the Hub's record. No execution with the pinned weights is recorded yet (see [Release status](#release-status)).
 
 ## Upstream alignment
 
 - Model: `microsoft/cvt-13`
-- Revision: not yet pinned (`unpinned`)
+- Revision: `84e365a5f6a5ca987486abb25f3d8e5265cdc44d`
 - Upstream weight license: Apache-2.0 (the Hub card; the upstream `microsoft/CvT` code is MIT)
 - Upstream task: single-label classification over the 1000 ImageNet-1k classes
 - Repository adaptation: bounded gradient fine-tuning of a new head, with the whole network trained by default or the backbone frozen and its BatchNorm statistics held
@@ -39,12 +39,12 @@ Install into a Python 3.12 environment that already holds the pinned dependencie
 
 ## Pinning the snapshot
 
-From the repository root, with network access to huggingface.co:
+The snapshot is pinned (see [Upstream alignment](#upstream-alignment)). To move to a newer upstream commit, from the repository root with network access to huggingface.co:
 
-1. Run `python tools/pin_snapshot.py`. It resolves `main` to a commit, downloads the four manifest files at that commit into `weights/cvt-13/`, checks each LFS file against the Hub's SHA-256, records the LFS SHA-256 of `pytorch_model.bin` and `tf_model.h5` without downloading them, and writes the commit and digests into the manifest and `MODEL_REVISION`.
+1. Run `python tools/pin_snapshot.py` (or `--revision <commit>`). It resolves `main` to a commit, downloads the four manifest files at that commit into `weights/cvt-13/`, checks each LFS file against the Hub's SHA-256, records the LFS SHA-256 of `pytorch_model.bin` and `tf_model.h5` without downloading them, and writes the commit and digests into the manifest and `MODEL_REVISION`.
 2. Commit, then run `python tools/build_notebook.py` and commit the regenerated notebook.
-3. Replace the "not yet pinned" statements in `README.md`, `MODEL_CARD.md`, `STATUS.md` and `docs/WEIGHTS.md` with the commit and digests.
-4. Run `python tools/validate_release_assets.py` and `pytest`. The validator fails while any document still says the snapshot is not yet pinned.
+3. Update the commit and digests cited in `README.md`, `MODEL_CARD.md`, `STATUS.md`, `docs/WEIGHTS.md`, `tutorials/README.md` and `docs/release-verification.md`.
+4. Run `python tools/validate_release_assets.py` and `pytest`. A new pin invalidates any recorded execution, so the status returns to Candidate until the new commit is run.
 
 ## Weights layout
 
@@ -69,7 +69,7 @@ weights/cvt-13/
 
 ## Release status
 
-**Candidate.** The snapshot is not yet pinned and no execution with the pinned weights is recorded. Static checks, unit tests and the small-model test do not constitute notebook execution evidence; `docs/release-verification.md` defines the release gate.
+**Candidate.** The snapshot is pinned (`84e365a`), but no execution with the pinned weights is recorded. Static checks, unit tests and the small-model test do not constitute notebook execution evidence; `docs/release-verification.md` defines the release gate.
 
 ## Documentation
 

@@ -25,7 +25,7 @@ from PIL import Image
 from .data import validate_dataset
 
 MODEL_ID = "microsoft/cvt-13"
-MODEL_REVISION = "unpinned"
+MODEL_REVISION = "84e365a5f6a5ca987486abb25f3d8e5265cdc44d"
 MODEL_LICENSE = "apache-2.0"
 MODEL_KEY = "cvt-13"
 DEFAULT_WEIGHTS_DIR = Path(__file__).resolve().parents[2] / "weights" / MODEL_KEY

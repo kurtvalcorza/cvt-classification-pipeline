@@ -3,27 +3,27 @@
   "formatVersion": 1,
   "modelKey": "cvt-13",
   "modelId": "microsoft/cvt-13",
-  "revision": "unpinned",
+  "revision": "84e365a5f6a5ca987486abb25f3d8e5265cdc44d",
   "files": [
     {
       "path": "README.md",
       "bytes": 1674,
-      "sha256": null
+      "sha256": "6ecd51bcc02aae828328e2ffa69e3ba706ff60a2cfbfca23a0ae4c98a59c5e02"
     },
     {
       "path": "config.json",
       "bytes": 70332,
-      "sha256": null
+      "sha256": "06fa33d90a96b5b22e95f3ab54a9ed6ed1725c13ec546d4ae0bbca3fd15a115f"
     },
     {
       "path": "preprocessor_config.json",
       "bytes": 266,
-      "sha256": null
+      "sha256": "fd575b890da5a949493e1d1e7a70bfcb9e4b99fe444004d2dbfa253add254741"
     },
     {
       "path": "model.safetensors",
       "bytes": 80166694,
-      "sha256": null
+      "sha256": "71576c56ac8aaabc1db4e74d86d0316ba1fe7ecff397bbe81b33cf874df8eee2"
     }
   ],
   "totalBytes": 80238966,
@@ -31,13 +31,13 @@
     {
       "path": "pytorch_model.bin",
       "bytes": 80260523,
-      "sha256": null,
+      "sha256": "77c0a16fa66a3c762159966806b8b22e13c4f0e6c879544e83621e6053f5a8e2",
       "note": "pickle checkpoint of the same weights; not staged, not loaded; its Hub LFS SHA-256 is recorded for provenance only"
     },
     {
       "path": "tf_model.h5",
       "bytes": 80698472,
-      "sha256": null,
+      "sha256": "d782bacd92bd57ab1b7e59e5cbff7f1a102e094cc338ac72186af080ebd5abc1",
       "note": "hosted TensorFlow checkpoint; not staged, not loaded; its Hub LFS SHA-256 is recorded for provenance only"
     }
   ]
