@@ -1,0 +1,44 @@
+{
+  "format": "dimer_hf_snapshot",
+  "formatVersion": 1,
+  "modelKey": "cvt-13",
+  "modelId": "microsoft/cvt-13",
+  "revision": "unpinned",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1674,
+      "sha256": null
+    },
+    {
+      "path": "config.json",
+      "bytes": 70332,
+      "sha256": null
+    },
+    {
+      "path": "preprocessor_config.json",
+      "bytes": 266,
+      "sha256": null
+    },
+    {
+      "path": "model.safetensors",
+      "bytes": 80166694,
+      "sha256": null
+    }
+  ],
+  "totalBytes": 80238966,
+  "referenceFiles": [
+    {
+      "path": "pytorch_model.bin",
+      "bytes": 80260523,
+      "sha256": null,
+      "note": "pickle checkpoint of the same weights; not staged, not loaded; its Hub LFS SHA-256 is recorded for provenance only"
+    },
+    {
+      "path": "tf_model.h5",
+      "bytes": 80698472,
+      "sha256": null,
+      "note": "hosted TensorFlow checkpoint; not staged, not loaded; its Hub LFS SHA-256 is recorded for provenance only"
+    }
+  ]
+}
