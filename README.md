@@ -2,7 +2,7 @@
 
 DIMER pipeline for **CvT-13** (`microsoft/cvt-13`), a Vision Transformer with convolutional token embeddings and convolutional projections, trained on ImageNet-1k. The pipeline loads the checkpoint only from a digest-verified local snapshot, returns top-k softmax scores over the ImageNet-1k classes, and adds a bounded fine-tuning workflow that replaces the head for a new set of classes, compares it with majority-class and zero-shot baselines, and exports a SafeTensors adapter.
 
-> **The upstream snapshot is pinned** to Hub commit `84e365a5f6a5ca987486abb25f3d8e5265cdc44d` (pinned 2026-09-25). The manifest records every file's byte size and SHA-256, and each LFS digest matched the Hub's record. No execution with the pinned weights is recorded yet (see [Release status](#release-status)).
+> **The upstream snapshot is pinned** to Hub commit `84e365a5f6a5ca987486abb25f3d8e5265cdc44d` (pinned 2026-09-25). The manifest records every file's byte size and SHA-256, and each LFS digest matched the Hub's record. Default-path execution recorded on 2026-09-26 (Kaggle T4); REL12 BYOD exercise pending before promotion (see [Release status](#release-status)).
 
 ## Upstream alignment
 
@@ -69,7 +69,7 @@ weights/cvt-13/
 
 ## Release status
 
-**Candidate.** The snapshot is pinned (`84e365a`), but no execution with the pinned weights is recorded. Static checks, unit tests and the small-model test do not constitute notebook execution evidence; `docs/release-verification.md` defines the release gate.
+**Candidate.** The snapshot is pinned (`84e365a`). Default-path execution recorded on 2026-09-26 (Kaggle T4): the exact notebook blob `5d9e491cd649` (commit `5e0f03b`) ran top-to-bottom with both BYOD branches off. On one seeded split of 60 held-out CIFAR-10 thumbnails, accuracy was 0.9833 for the zero-shot ImageNet mapping and 1.000 for the fine-tuned head (majority baseline 0.500, untrained head 0.250), a one-image difference; unseen accuracy 0.9833; one runtime. The split is not duplicate-aware, so 46 of 60 held-out and 36 of 60 unseen images have their darkened/original counterpart in train. REL12 BYOD exercise pending before promotion: release step 7 has not been run. Static checks, unit tests and the small-model test do not constitute notebook execution evidence; `docs/release-verification.md` defines the release gate.
 
 ## Documentation
 
