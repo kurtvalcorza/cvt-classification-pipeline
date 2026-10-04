@@ -1,0 +1,223 @@
+[colab] Parsing notebook '/home/kurt/colab-runs/cvt-classification-pipeline-3a1f3da-57cc5c/cvt_classification_colab_3a1f3da_colab-cli-t4.ipynb'...
+[colab] Executing cell 1/16 - Infrastructure: install the locked runtime into an isolated environment...
+{'isolated_environment': '/content/dimer_isolated_env', 'isolated_python': '3.12.12', 'kernel_python': '3.13.15', 'locked_packages': 46, 'setup_seconds': 57}
+[colab] Executing cell 2/16 - Route the remaining cells to the isolated environment...
+Every later code cell now runs in /content/dimer_isolated_env/bin/python (pid 4090).
+[colab] Executing cell 3/16 - cvt_classification-07...
+{'notebook_source': {'repository': 'cvt-classification-pipeline', 'repository_revision': '4ca54e2903b3038fc767d10c6f621683fad16005', 'embedded_module': 'src/cvt_classification_pipeline/pipeline.py', 'embedded_modules': ['src/cvt_classification_pipeline/data.py', 'src/cvt_classification_pipeline/pipeline.py'], 'module_sha256': 'b6e1dd37862339e48eadc5fcbc4a7e8393b6de5ec9d92f9071443083a45f280e', 'generator': 'build_notebook.py/2.1', 'notebook_spec': '2.2'}, 'python': '3.12.12', 'torch': '2.14.0+cu130', 'torchvision': '0.29.0+cu130', 'transformers': '4.57.6', 'numpy': '2.5.3', 'PIL': '11.3.0', 'cuda': True}
+[colab] Executing cell 4/16 - cvt_classification-09...
+[colab] Executing cell 5/16 - cvt_classification-11...
+[colab] Executing cell 6/16 - cvt_classification-13...
+{'model_id': 'microsoft/cvt-13', 'revision': '84e365a5f6a5ca987486abb25f3d8e5265cdc44d', 'license': 'apache-2.0', 'files': 4, 'total_bytes': 80238966}
+{'weights_dir': '/content/weights/cvt-13', 'fetched': ['README.md', 'config.json', 'preprocessor_config.json', 'model.safetensors']}
+{'verified_files': 4, 'revision': '84e365a5f6a5ca987486abb25f3d8e5265cdc44d'}
+{'device': 'cuda:0', 'source': '/content/weights/cvt-13'}
+[colab] Executing cell 7/16 - cvt_classification-15...
+{'dataset_id': 'Cleanlab/cifar-10-subset', 'revision': 'bb5a7aabf1d14d2d1e3e49d0d8f917bda3622f75', 'license': 'mit', 'bytes': 986707, 'sha256': '66f90a4f87d865e8eb653b62f10e754684075a32314177de76832349d4b1fb19', 'fetched': True}
+{
+  "n_records": 400,
+  "class_names": [
+    "frog",
+    "truck"
+  ],
+  "images_per_class": {
+    "frog": 200,
+    "truck": 200
+  },
+  "image_side_px": [
+    32,
+    32
+  ],
+  "duplicate_groups": 100,
+  "epochs": 5,
+  "findings": [
+    "100 group(s) of pixel-identical images, e.g. ['CIFAR-10-subset/darkened_images/truck/image_0.png', 'CIFAR-10-subset/original_images/truck/image_0.png']"
+  ],
+  "verdict": "accepted"
+}
+{
+  "records": 400,
+  "groups": 200,
+  "groups_with_duplicates": 200,
+  "records_in_duplicate_groups": 400,
+  "exact_copies": 100,
+  "near_duplicate_links": 100,
+  "mixed_label_groups": 0,
+  "mixed_label_examples": [],
+  "method": "pixel digest, or 16x16 grayscale correlation >= 0.95"
+}
+<PIL.Image.Image image mode=RGB size=512x128 at 0x79A7E02EC770>
+
+[Image saved to: /tmp/tmp932mtl6c.png]
+[colab] Executing cell 8/16 - cvt_classification-17...
+{
+  "train": 280,
+  "held_out": 60,
+  "unseen": 60,
+  "train_majority": "frog",
+  "duplicates_across_splits": {
+    "held_out": {
+      "records": 60,
+      "pixel_copy_in_reference": 0,
+      "near_duplicate_in_reference": 0
+    },
+    "unseen": {
+      "records": 60,
+      "pixel_copy_in_reference": 0,
+      "near_duplicate_in_reference": 0
+    },
+    "unseen_vs_held_out": {
+      "records": 60,
+      "pixel_copy_in_reference": 0,
+      "near_duplicate_in_reference": 0
+    }
+  }
+}
+frog -> [('fox squirrel', 0.414), ('wood rabbit', 0.03), ('redbone', 0.029), ('chain saw', 0.029), ('tailed frog', 0.011)]
+frog -> [('fox squirrel', 0.52), ('redbone', 0.05), ('wood rabbit', 0.021), ('chain saw', 0.019), ('black-and-tan coonhound', 0.009)]
+truck -> [('screw', 0.219), ('whistle', 0.159), ('can opener', 0.109), ('safety pin', 0.052), ('harmonica', 0.014)]
+truck -> [('screw', 0.219), ('whistle', 0.159), ('can opener', 0.109), ('safety pin', 0.052), ('harmonica', 0.014)]
+{'verdict': 'sample-sanity', 'metrics': [(1, 0.0), (5, 0.25)]}
+{
+  "accuracy": 0.9666666666666667,
+  "balanced_accuracy": 0.9666666666666667,
+  "majority_baseline_accuracy": 0.5,
+  "mean_group_mass": 0.34207814931869507,
+  "per_class_recall": {
+    "frog": 0.9333333333333333,
+    "truck": 1.0
+  }
+}
+[colab] Executing cell 9/16 - cvt_classification-19...
+{
+  "blank": [
+    [
+      "nematode",
+      0.002
+    ],
+    [
+      "switch",
+      0.002
+    ],
+    [
+      "hook",
+      0.002
+    ]
+  ],
+  "noise": [
+    [
+      "jellyfish",
+      0.016
+    ],
+    [
+      "nematode",
+      0.015
+    ],
+    [
+      "kite",
+      0.013
+    ]
+  ]
+}
+[colab] Executing cell 10/16 - cvt_classification-21...
+{'class_names': ['frog', 'truck'], 'reinitialised': ['classifier.'], 'device': 'cuda:0'}
+{'accuracy': 0.26666666666666666, 'balanced_accuracy': 0.26666666666666666, 'per_class_recall': {'frog': 0.4, 'truck': 0.13333333333333333}}
+[colab] Executing cell 11/16 - cvt_classification-23...
+epoch 1/5  loss 0.4434
+epoch 2/5  loss 0.2418
+epoch 3/5  loss 0.2956
+epoch 4/5  loss 0.1784
+epoch 5/5  loss 0.1726
+{
+  "freeze_backbone": false,
+  "trainable_parameters": 19613250,
+  "total_parameters": 19613250,
+  "epochs": 5,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "optimizer": "AdamW",
+  "augmentation": "none (evaluation transform)",
+  "precision": "float32",
+  "device": "cuda:0",
+  "train_seconds": 21.0
+}
+[colab] Executing cell 12/16 - cvt_classification-25...
+method                         correct  accuracy      95% Wilson  balanced
+majority class                   30/60     0.500  [0.377, 0.623]     0.500
+zero-shot ImageNet mapping       58/60     0.967  [0.886, 0.991]     0.967
+untrained two-class head         16/60     0.267  [0.171, 0.390]     0.267
+fine-tuned                       60/60     1.000  [0.940, 1.000]     1.000
+confusion (rows true, columns predicted): {'labels': ['frog', 'truck'], 'rows_true_cols_predicted': [[30, 0], [0, 30]]}
+reading: fine-tuned 60/60 and zero-shot 58/60: the 95% Wilson intervals overlap, so this split cannot tell them apart
+{'run': 0, 'freeze_backbone': False, 'per_class': 200, 'epochs': 5, 'learning_rate': 0.0001, 'trainable_parameters': 19613250, 'held_out_n': 60, 'zero_shot_accuracy': 0.9667, 'fine_tuned_accuracy': 1.0, 'final_loss': 0.1726, 'train_seconds': 21.0}
+[colab] Executing cell 13/16 - cvt_classification-27...
+{'correct': 60, 'n': 60, 'accuracy': 1.0, 'wilson_95': [0.9398, 1.0], 'balanced_accuracy': 1.0}
+[
+  {
+    "id": "CIFAR-10-subset/darkened_images/frog/image_15.png",
+    "truth": "frog",
+    "predicted": "frog",
+    "score": 0.999
+  },
+  {
+    "id": "CIFAR-10-subset/original_images/frog/image_15.png",
+    "truth": "frog",
+    "predicted": "frog",
+    "score": 0.9987
+  },
+  {
+    "id": "CIFAR-10-subset/darkened_images/frog/image_75.png",
+    "truth": "frog",
+    "predicted": "frog",
+    "score": 0.9911
+  },
+  {
+    "id": "CIFAR-10-subset/original_images/frog/image_75.png",
+    "truth": "frog",
+    "predicted": "frog",
+    "score": 0.9972
+  },
+  {
+    "id": "CIFAR-10-subset/darkened_images/frog/image_58.png",
+    "truth": "frog",
+    "predicted": "frog",
+    "score": 0.9956
+  },
+  {
+    "id": "CIFAR-10-subset/original_images/frog/image_58.png",
+    "truth": "frog",
+    "predicted": "frog",
+    "score": 0.9973
+  }
+]
+{'blank': [('truck', 0.537), ('frog', 0.463)], 'noise': [('frog', 0.567), ('truck', 0.433)]}
+[colab] Executing cell 14/16 - cvt_classification-29...
+{
+  "path": "outputs/cvt_adapter.safetensors",
+  "bytes": 78629904,
+  "sha256": "64ceb16720c58868a901e670836085cf7896216488ad9f70b05b051f829fb605",
+  "format": "cvt-adapter-v1",
+  "class_names": [
+    "frog",
+    "truck"
+  ],
+  "tensors": 459,
+  "frozen_prefixes": [],
+  "base_state_digest": "71576c56ac8aaabc1db4e74d86d0316ba1fe7ecff397bbe81b33cf874df8eee2",
+  "model_id": "microsoft/cvt-13",
+  "model_revision": "84e365a5f6a5ca987486abb25f3d8e5265cdc44d"
+}
+{'reloaded_source': 'artifact:cvt_adapter.safetensors', 'adapted': True, 'class_names': ['frog', 'truck']}
+{'images_compared': 60, 'tolerance': 0.0001, 'equivalent': True}
+[colab] Executing cell 15/16 - cvt_classification-31...
+  cvt_adapter.safetensors                            78,629,904 bytes
+  cvt_classification_evaluation_report.json                 780 bytes
+  cvt_classification_input_manifest.json                  1,330 bytes
+  cvt_classification_predictions.csv                     15,366 bytes
+  cvt_classification_result.json                         13,045 bytes
+[colab] Executing cell 16/16 - cvt_classification-33...
+refused as expected: non-image object -> TypeError: images must be a PIL.Image.Image or a sequence of them
+refused as expected: class with one image -> ValueError: every class needs at least 2 images to split; short classes: {'frog': 1, 'truck': 1}
+BYOD image branch is off; set USE_BYOD_IMAGE = True to classify your own image.
+BYOD dataset branch is off; set USE_BYOD_DATASET = True to adapt CvT-13 on your own class folders.
+[colab] Saving notebook with outputs to '/home/kurt/colab-runs/cvt-classification-pipeline-3a1f3da-57cc5c/cvt_classification_colab_3a1f3da_colab-cli-t4_output.ipynb'...
