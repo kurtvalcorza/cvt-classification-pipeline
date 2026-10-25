@@ -43,5 +43,5 @@ Notebook identity is the Git blob id of `tutorials/cvt_classification_colab.ipyn
 
 ## Tier C wording revision (2026-10-25)
 
-**Tier C wording revision (2026-10-25, branch `fix/cvt-classification-tier-c-2026-10-25`, code commit `ac60464`).** Markdown, header and metadata only: pretraining-overlap statement (DAT9), the hosted-timing sentence, run-labelled numbers (REL13), use notice, `notebook_kind` and IEEE references. The regenerated notebook blob `080d9f53303f9ac36599ece632d8b8dabaf2be48` is **Candidate** and its hosted runs are **pending** (REL14); the 2026-10-04 Colab T4 run of `3a1f3da` is evidence for blob `11fda4dd` only.
+**Tier C wording revision (2026-10-25, branch `fix/cvt-classification-tier-c-2026-10-25`, code commit `ac60464`).** Markdown, header and metadata only: pretraining-overlap statement (DAT9), the hosted-timing sentence, run-labelled numbers (REL13), use notice, `notebook_kind`, IEEE references and the DIMER Notebook Specification 2.5 declaration. The regenerated notebook blob `af867bef9cd56288cb87e3243657637bddf7be82` is **Candidate** and its hosted runs are **pending** (REL14); the 2026-10-04 Colab T4 run of `3a1f3da` is evidence for blob `11fda4dd` only.
 
