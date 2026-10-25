@@ -431,7 +431,22 @@ def test_tier_c_guided_answers_hold_across_every_recorded_hosted_run():
     text = "\n".join("".join(c["source"]) for c in _notebook()["cells"] if c["cell_type"] == "markdown")
     for gone in ("0.4726, 0.2262, 0.2489, 0.1577 and 0.2057", "`truck` 0.577 for the blank image", "Hosted runs of this revision are pending"):
         assert gone not in text, gone
-    for quoted in ("0.4434, 0.2418, 0.2955, 0.1777 and 0.1726 on 2026-10-25", "`train_seconds` was 21.0 and 20.0",
+    for quoted in ("0.4434, 0.2418, 0.2955, 0.1777 and 0.1726 (blob `af867bef`)", "`train_seconds` was 21.0, 20.0 and 21.3",
                    "`truck` for the blank image (0.537 and 0.657)", "`frog` for noise (0.567 and 0.576)",
                    "119.5 s wall, fine-tune 20.0 s", "blob `af867bef`"):
+        assert quoted in text, quoted
+
+
+def test_historical_wording_records_every_hosted_run():
+    # Historical wording (2026-10-26): timings and run numbers are records of every named hosted run, never
+    # expectations; the third Colab T4 run (blob f7c4c28e) is included. Fails on PR #3 head 28fa648.
+    text = "
+".join("".join(c["source"]) for c in _notebook()["cells"] if c["cell_type"] == "markdown")
+    for gone in ("about 2 minutes of wall time", "setup 56–57 s", "about 20 s of it the fine-tune",
+                 "(about 20 s on a Colab T4)", "in both recorded Colab T4 runs", "Both recorded Colab T4 runs",
+                 "The loss falls, not smoothly"):
+        assert gone not in text, gone
+    for quoted in ("between 119.5 and 133.2 s of wall time", "127.8 s wall, setup 55 s, fine-tune 21.3 s",
+                   "0.1788 and 0.1728 (blob `f7c4c28e`)", "`frog` for both (blank 0.614, noise 0.545)",
+                   "all three recorded Colab T4 runs"):
         assert quoted in text, quoted
