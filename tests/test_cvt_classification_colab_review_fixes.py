@@ -441,7 +441,7 @@ def test_historical_wording_records_every_hosted_run():
     # Historical wording (2026-10-26): timings and run numbers are records of every named hosted run, never
     # expectations; the third Colab T4 run (blob f7c4c28e) is included. Fails on PR #3 head 28fa648.
     text = "\n".join("".join(c["source"]) for c in _notebook()["cells"] if c["cell_type"] == "markdown")
-    for gone in ("about 2 minutes of wall time", "setup 56–57 s", "about 20 s of it the fine-tune",
+    for gone in ("about 2 minutes of wall time", "setup 56–57 s", "about 20 s of it the fine-tune (blob",
                  "(about 20 s on a Colab T4)", "in both recorded Colab T4 runs", "Both recorded Colab T4 runs",
                  "The loss falls, not smoothly"):
         assert gone not in text, gone
