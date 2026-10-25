@@ -424,3 +424,14 @@ def test_worker_colab_stubs_have_specs(monkeypatch, real_google):
     finally:
         for name in ("google", "google.colab", "google.colab.files"):
             sys.modules.pop(name, None)  # monkeypatch then restores whatever was there before
+
+
+def test_tier_c_guided_answers_hold_across_every_recorded_hosted_run():
+    # Tier C prose-mismatch fix (2026-10-25): T4-run numbers name both Colab T4 runs; CPU-only figures stay labelled as CPU.
+    text = "\n".join("".join(c["source"]) for c in _notebook()["cells"] if c["cell_type"] == "markdown")
+    for gone in ("0.4726, 0.2262, 0.2489, 0.1577 and 0.2057", "`truck` 0.577 for the blank image", "Hosted runs of this revision are pending"):
+        assert gone not in text, gone
+    for quoted in ("0.4434, 0.2418, 0.2955, 0.1777 and 0.1726 on 2026-10-25", "`train_seconds` was 21.0 and 20.0",
+                   "`truck` for the blank image (0.537 and 0.657)", "`frog` for noise (0.567 and 0.576)",
+                   "119.5 s wall, fine-tune 20.0 s", "blob `af867bef`"):
+        assert quoted in text, quoted
