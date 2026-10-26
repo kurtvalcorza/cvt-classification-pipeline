@@ -48,6 +48,8 @@ Notebook identity is the Git blob id of `tutorials/cvt_classification_colab.ipyn
 
 **Tier C wording revision (2026-10-25, branch `fix/cvt-classification-tier-c-2026-10-25`, code commit `ac60464`).** Markdown, header and metadata only: pretraining-overlap statement (DAT9), the hosted-timing sentence, run-labelled numbers (REL13), use notice, `notebook_kind`, IEEE references and the DIMER Notebook Specification 2.5 declaration. The regenerated notebook blob `af867bef9cd56288cb87e3243657637bddf7be82` (PR #3 head `fb16a40`) is **Candidate**; it ran in one pass with no restart and 0 errors on a fresh Colab Tesla T4 on 2026-10-25 (Colab CLI sequential execution, 16/16 code cells, 119.5 s; default path only; see the 2026-10-25 row under "Recorded executions"). Remaining gates: REL12 (a BYOD run, one input accepted and one refused) and REL2 (a browser run of the interactive journeys). Under REL14 the 2026-10-04 Colab T4 run of `3a1f3da` is history for blob `11fda4dd`. The guided answers quote the local CPU run of `3a1f3da` for the fine-tune losses, `train_seconds` and the blank/noise answers; this blob's T4 run printed different values for those (see its row).
 
+The current blob `113725bd` (code commit `b794183`) shows a refused BYOD input as one `Refused: <file>: <reason>` line with no traceback, removes the earlier run's results and `outputs/` files and stops Run all at that cell, while genuine failures keep their traceback (NOTEBOOK_SPEC DAT19/DAT20); its hosted Colab T4 runs (the default path and a scripted refusal, `USE_BYOD_IMAGE=True;BYOD_IMAGE_PATH='/etc/hostname'`) are pending, and the hosted runs of earlier blobs, including `895d5b304c36`, are history for it (REL14).
+
 
 ## Prose-mismatch revision (2026-10-25)
 
