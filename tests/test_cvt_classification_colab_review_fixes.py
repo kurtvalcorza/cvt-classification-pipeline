@@ -377,7 +377,7 @@ def test_only_the_uv_install_and_router_cells_run_in_the_kernel():
     code = [_source(c) for c in nb["cells"] if c["cell_type"] == "code"]
     kernel = [c for c in code if "# dimer: kernel cell" in c]
     assert len(kernel) == 2 and "--require-hashes" in kernel[0] and "--managed-python" in kernel[0]
-    assert nb["metadata"]["dimer"]["notebook_spec"] == "2.2"
+    assert nb["metadata"]["dimer"]["notebook_spec"] == "2.5"
 
 
 def test_review_prose_is_gone_and_the_guided_layer_is_present():
@@ -424,3 +424,28 @@ def test_worker_colab_stubs_have_specs(monkeypatch, real_google):
     finally:
         for name in ("google", "google.colab", "google.colab.files"):
             sys.modules.pop(name, None)  # monkeypatch then restores whatever was there before
+
+
+def test_tier_c_guided_answers_hold_across_every_recorded_hosted_run():
+    # Tier C prose-mismatch fix (2026-10-25): T4-run numbers name both Colab T4 runs; CPU-only figures stay labelled as CPU.
+    text = "\n".join("".join(c["source"]) for c in _notebook()["cells"] if c["cell_type"] == "markdown")
+    for gone in ("0.4726, 0.2262, 0.2489, 0.1577 and 0.2057", "`truck` 0.577 for the blank image", "Hosted runs of this revision are pending"):
+        assert gone not in text, gone
+    for quoted in ("0.4434, 0.2418, 0.2955, 0.1777 and 0.1726 (blob `af867bef`)", "`train_seconds` was 21.0, 20.0 and 21.3",
+                   "`truck` for the blank image (0.537 and 0.657)", "`frog` for noise (0.567 and 0.576)",
+                   "119.5 s wall, fine-tune 20.0 s", "blob `af867bef`"):
+        assert quoted in text, quoted
+
+
+def test_historical_wording_records_every_hosted_run():
+    # Historical wording (2026-10-26): timings and run numbers are records of every named hosted run, never
+    # expectations; the third Colab T4 run (blob f7c4c28e) is included. Fails on PR #3 head 28fa648.
+    text = "\n".join("".join(c["source"]) for c in _notebook()["cells"] if c["cell_type"] == "markdown")
+    for gone in ("about 2 minutes of wall time", "setup 56–57 s", "about 20 s of it the fine-tune (blob",
+                 "(about 20 s on a Colab T4)", "in both recorded Colab T4 runs", "Both recorded Colab T4 runs",
+                 "The loss falls, not smoothly"):
+        assert gone not in text, gone
+    for quoted in ("between 119.5 and 133.2 s of wall time", "127.8 s wall, setup 55 s, fine-tune 21.3 s",
+                   "0.1788 and 0.1728 (blob `f7c4c28e`)", "`frog` for both (blank 0.614, noise 0.545)",
+                   "all three recorded Colab T4 runs"):
+        assert quoted in text, quoted
