@@ -1,0 +1,80 @@
+{
+  "repo": "cvt-classification-pipeline",
+  "sha": "2ac2eee7a225023a99ac90e7ff769c3018923a9e",
+  "notebook": "tutorials/cvt_classification_colab.ipynb",
+  "blob": "43455c59d4b2a26c6d9b0e97067e8da991ceab39",
+  "gpu": "T4",
+  "session": "suite-cvt-2ac2eee-57cc",
+  "started_utc": "2026-11-02T16:31:04+00:00",
+  "runner": "Colab CLI `colab exec -f` on a fresh session (not a browser Run all)",
+  "overrides": [
+    {
+      "name": "USE_BYOD_IMAGE",
+      "from": "False",
+      "to": "True"
+    },
+    {
+      "name": "BYOD_IMAGE_PATH",
+      "from": "\\\"\\\"",
+      "to": "'/etc/hostname'"
+    }
+  ],
+  "run_copy_blob": "15f8da5dc34435ed7742f300be40eaae66478268",
+  "run_copy_sha256": "2797ed52ec8d16b3e5d7cb93a0c2a4823c8f5f60cb5fc90ac34a4c522ca58122",
+  "run_copy_note": "refusal run: the run copy is the committed notebook with the listed assignment overrides, cut immediately after the refusal cell and re-serialised (nbformat layout); input_unchanged compares against that copy",
+  "truncated_after_cell": "cvt_classification-33",
+  "refusal_cell_ref": "cvt_classification-33",
+  "refusal_cell_index": 16,
+  "cells_dropped": 1,
+  "code_cells_dropped": 0,
+  "original_sha256": "cb5b980b82eec2839781a77ece8fa767174a6a28aad47ba849294fe66231ca92",
+  "status": "[suite-cvt-2ac2eee-57cc] gpu-t4-s-ass1a0-3ahhm7kgi9cxo | Hardware: T4 | Shape: Standard | Variant: GPU | Status: IDLE",
+  "exec_exit_code": 0,
+  "stopped": true,
+  "stop_verified": true,
+  "wall_s": 120.5,
+  "input_unchanged": true,
+  "executed_file": "cvt_classification_colab_2ac2eee_colab-cli-t4_output.ipynb",
+  "log_cells": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "log_total": 16,
+  "code_cells": 16,
+  "executed_cells": 14,
+  "errors": [
+    {
+      "cell": "cvt_classification-33",
+      "ename": "IsolatedCellRefusal",
+      "evalue": "hostname: not an image PIL can open (cannot identify image file '/etc/hostname'); set BYOD_IMAGE_PATH to a .png, .jpg, .bmp or .webp file and run this cell again (the earlier results of this session and their outputs/ files were removed)."
+    }
+  ],
+  "execution_counts": [],
+  "sequential": null,
+  "executed_sha256": "2b78375c653135d1ed687b0ddf22b3eed73af3a04d952d958a061d0cfb85b56b",
+  "log_sequential_complete": true,
+  "mode": "expect_refusal",
+  "refusal_line": "Refused: hostname: not an image PIL can open (cannot identify image file '/etc/hostname'); set BYOD_IMAGE_PATH to a .png, .jpg, .bmp or .webp file and run this cell again (the earlier results of this session and their outputs/ files were removed).",
+  "halting_cell_index": 16,
+  "halting_cell_id": "cvt_classification-33",
+  "error_cells": [
+    16
+  ],
+  "refusal_fail_reasons": [],
+  "refusal_ok": true,
+  "verdict": "PASS"
+}
